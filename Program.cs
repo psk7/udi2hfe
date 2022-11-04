@@ -56,12 +56,6 @@ namespace udi2hfe
                                 _ => syncBit
                             };
 
-                        /*if (isSyncMark && data != 0xa1)
-                            Console.WriteLine($"SyncMark {data:X2}");*/
-
-                        //if (i == 2 && isSyncMark)
-                        //    syncBit = 0;
-
                         MfmWriter(syncBit);
                         MfmWriter(dataBit);
                         prevDataBit = dataBit;
@@ -187,9 +181,6 @@ namespace udi2hfe
                     var clen = tlen / 8 + (tlen % 8 + 7) / 8;
                     var flags = rd.ReadBytes(clen);
                     images.Add(new TrackInfo(img, flags));
-
-                    //File.WriteAllBytes("kokoko.bin", img);
-                    //File.WriteAllBytes("kokokof.bin", flags);
                 }
             }
 
